@@ -68,3 +68,22 @@ git push -u origin main
 
 Settings → Pages → deploy from branch, root folder. Add a `CNAME` file
 containing the domain if you point DNS at it.
+
+## Hero fix (applied)
+
+Both homepages had two empty `<video autoplay loop muted playsInline>` elements
+layered over the hero. They had no source on the live site either, so browsers
+rendered the broken-media control — the play button you saw on mobile.
+
+Removed all four (two per homepage). The hero was already a static background
+image (`promo-janv-2025.jpg`), so nothing else changed.
+
+Also added `background-position: center` to the hero's inline style. Without it
+the browser defaults to top-left, which crops badly on narrow screens now that
+the image is the whole hero. To revert, delete that one property from the
+`home-hero` section in `index.html` and `en/index.html`.
+
+Note: `.home-hero` is `height: 100vh` in the Oxygen CSS. On mobile browsers
+`100vh` includes the address bar, so the section can run slightly taller than
+the screen. That behaviour is unchanged from the live site — flagging it in case
+you'd rather switch it to `100svh`.
