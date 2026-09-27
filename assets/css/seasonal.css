@@ -1,0 +1,35 @@
+/* Shared seasonal promotion: French and English, 2026–2027. */
+.season-notice { position: relative; z-index: 21; width: 100%; background: #080808; border-bottom: 3px solid #ffd503; }
+.season-notice .season-notice__link { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 16px 28px; color: #ffd503; font-family: Lato, Arial, sans-serif; line-height: 1.35; text-decoration: none; }
+.season-notice__badge { padding: 7px 10px; border: 1px solid #ffd503; font-size: 12px; font-weight: 900; letter-spacing: 1.4px; white-space: nowrap; }
+.season-notice__message { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 16px; font-size: 15px; }
+.season-notice__message strong { font-size: 18px; font-weight: 900; }
+.season-notice__cta { font-size: 14px; font-weight: 900; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; }
+.season-notice__cta span { display: inline-block; margin-left: 8px; font-size: 22px; }
+.season-notice__link:hover { background: #222; }
+.season-notice__link:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+.seasonal-lease { display: flex; align-items: flex-start; gap: 32px; width: 100%; padding: 36px; margin: 0 0 24px; background: #f7f7f4; border: 1px solid #deded7; border-left: 5px solid #ffd503; color: #111; text-align: left; }
+.seasonal-lease__icon { display: flex; align-items: center; justify-content: center; flex: 0 0 140px; height: 140px; background: #ffd503; }
+.seasonal-lease__icon img { width: 120px; height: 100px; }
+.seasonal-lease__content { flex: 1; min-width: 0; }
+.seasonal-lease__label { font-size: 12px; font-weight: 900; letter-spacing: 1.5px; }
+.seasonal-lease h3 { margin: 8px 0 12px; color: #111; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.15; }
+.seasonal-lease p { margin: 0 0 14px; line-height: 1.6; }
+.seasonal-lease .seasonal-lease__price { font-size: 23px; font-weight: 900; }
+.seasonal-lease ul { padding-left: 22px; margin: 0 0 16px; line-height: 1.8; }
+.seasonal-lease__dates { font-weight: 700; }
+.seasonal-lease .seasonal-lease__cta { display: inline-flex; align-items: center; gap: 20px; background: #111; color: #ffd503; padding: 12px 20px; font-weight: 900; text-decoration: none; }
+.seasonal-lease__cta:hover { background: #333; }
+.seasonal-lease__cta:focus-visible { outline: 3px solid #111; outline-offset: 4px; }
+.seasonal-lease__limited { display: inline-block; margin: 10px 0 0 16px; font-size: 14px; }
+@media (max-width: 800px) {
+  .season-notice .season-notice__link { gap: 8px 16px; padding: 12px 16px; flex-wrap: wrap; text-align: center; }
+  .season-notice__badge { font-size: 10px; padding: 5px 8px; }
+  .season-notice__message { flex-basis: 100%; flex-direction: column; align-items: center; gap: 3px; font-size: 13px; }
+  .season-notice__message strong { font-size: 16px; }
+  .season-notice__cta { font-size: 13px; }
+  .seasonal-lease { gap: 20px; padding: 24px; flex-direction: column; }
+  .seasonal-lease__icon { flex-basis: auto; width: 100px; height: 90px; }
+  .seasonal-lease__icon img { width: 90px; height: 75px; }
+  .seasonal-lease__limited { display: block; margin-left: 0; }
+}
