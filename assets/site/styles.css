@@ -135,3 +135,68 @@ body{font-size:17px}
 
 /* Brand bumper inspired by the supplied reel, using the original logo vectors. */
 .unit-help-art{background:#080808}.unit-help-art>.booking-bumper{display:block;width:100%;height:100%;object-fit:contain}
+
+/* Embedded booking: a branded frame around the provider's own secure workflow. */
+.reservation-experience{max-width:1440px;padding-top:64px;padding-bottom:0}
+.reservation-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:32px}
+.reservation-heading .eyebrow{margin-bottom:18px}
+.reservation-heading h2{font-size:clamp(34px,3.7vw,52px);line-height:1.15;margin:0 0 16px}
+.reservation-heading p:not(.eyebrow){font-size:18px;line-height:1.6;max-width:620px;margin:0;color:#414141}
+.reservation-help{display:grid;grid-template-columns:1fr auto;column-gap:30px;row-gap:6px;flex-shrink:0;border-bottom:1px solid #bcbcbc;padding:0 0 14px}
+.reservation-help span{font-size:14px;color:#505050}
+.reservation-help strong{font-size:21px;grid-row:2}
+.reservation-help>svg{grid-column:2;grid-row:2;align-self:center}
+.reservation-console{border:1px solid #d8d8d8;border-top:4px solid var(--yellow);background:#fff}
+.reservation-toolbar{background:#101010;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 28px}
+.reservation-provider{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600}
+.reservation-provider>svg{color:var(--yellow);flex-shrink:0}
+.reservation-toolbar>a{display:flex;align-items:center;gap:14px;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.reservation-toolbar>a>svg{width:17px;height:17px;flex-shrink:0}
+.reservation-frame{display:block;width:100%;height:680px;border:0;background:#fff;color-scheme:light}
+.booking-guide{padding-top:72px}
+.booking-guide .booking-launch{margin-bottom:64px}
+.rental-terms{max-width:1000px;margin:0 auto;background:#fff;border:1px solid #d5d5d5;border-top:3px solid #101010;padding:36px 48px 44px}
+.contract-masthead{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #d7d7d7;padding-bottom:20px;margin-bottom:28px;text-transform:uppercase;font-size:11px;line-height:1.5;letter-spacing:.1em;font-weight:650;color:#505050}
+.rental-terms .terms{padding:0;margin:0;max-width:none;border:0}
+.rental-terms h2{font-family:var(--display);font-size:25px;letter-spacing:-.025em;line-height:1.3;margin:0 0 28px}
+.rental-terms .prose,.rental-terms .prose p{font-size:14px;line-height:1.8;letter-spacing:normal;color:#454545}
+.rental-terms .prose span{counter-reset:clause}
+.rental-terms .prose p{position:relative;margin:0 0 22px;padding-left:32px;text-wrap:pretty}
+.rental-terms .prose p:before{counter-increment:clause;content:counter(clause,decimal-leading-zero);position:absolute;left:0;top:2px;font-size:11px;font-weight:700;color:#757575;font-variant-numeric:tabular-nums}
+.rental-terms .prose p:last-child{margin-bottom:0}
+@media(max-width:800px){.reservation-heading{align-items:flex-start;flex-direction:column;gap:24px}.reservation-help{align-self:flex-start}.reservation-toolbar{padding:18px 20px;align-items:flex-start}.reservation-provider{font-size:12px}.reservation-toolbar>a{font-size:12px;max-width:180px}.rental-terms{padding:28px}.reservation-frame{height:720px}}
+@media(max-width:540px){.reservation-experience{padding-top:40px;padding-left:5%;padding-right:5%}.reservation-heading h2{font-size:35px}.reservation-heading p:not(.eyebrow){font-size:17px}.reservation-toolbar{flex-direction:column;gap:14px}.reservation-toolbar>a{max-width:none}.reservation-frame{height:690px}.booking-guide{padding-top:48px}.booking-guide .section-heading h2{font-size:30px}.booking-guide .booking-launch{margin-bottom:40px}.rental-terms{padding:26px 22px}.contract-masthead{font-size:10px;gap:16px}.rental-terms h2{font-size:23px}.rental-terms .prose,.rental-terms .prose p{font-size:14px;line-height:1.75}.rental-terms .prose p{padding-left:27px}}
+/* Keep the booking workflow primary; instructions are available on demand. */
+.reservation-heading p:not(.eyebrow){max-width:700px}
+.booking-guide{padding-top:28px}
+.booking-guide-details{border-top:1px solid #d4d4d4;border-bottom:1px solid #d4d4d4;margin:0 0 48px}
+.booking-guide-details>summary{display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;list-style:none;font-size:16px;font-weight:600;padding:24px 0;color:#393939}
+.booking-guide-details>summary::-webkit-details-marker{display:none}
+.booking-guide-details>summary>svg{width:20px;height:20px;flex-shrink:0;transition:transform .2s}
+.booking-guide-details[open]>summary>svg{transform:rotate(45deg)}
+.booking-guide-content{padding-bottom:32px}
+.booking-guide-content .steps{margin-top:8px}
+.booking-guide-content .step h3{font-size:22px}
+.booking-guide-content>.text-link{margin-top:24px;font-size:15px}
+@media(max-width:540px){.booking-guide{padding-top:20px}.booking-guide-details{margin-bottom:32px}.booking-guide-details>summary{font-size:15px;padding:22px 0}.booking-guide-content .step h3{font-size:22px}}
+/* Short reservation page: one introduction, the live form, two quiet disclosures. */
+.reservation-heading h1{font-size:clamp(34px,3.7vw,52px);line-height:1.15;margin:0 0 16px}
+.reservation-frame{height:560px}
+.booking-page .closing{display:none}
+.booking-page .booking-guide{padding-top:20px;padding-bottom:52px}
+.booking-guide-details{margin-bottom:16px}
+.rental-terms{padding:0;max-width:none;border:1px solid #d5d5d5;border-top:2px solid #101010}
+.rental-terms>summary{display:flex;justify-content:space-between;align-items:center;gap:24px;cursor:pointer;list-style:none;padding:22px 28px;font-size:16px;font-weight:600;color:#393939}
+.rental-terms>summary::-webkit-details-marker{display:none}
+.rental-terms>summary>svg{width:20px;height:20px;flex-shrink:0;transition:transform .2s}
+.rental-terms[open]>summary>svg{transform:rotate(45deg)}
+.contract-content{padding:12px 40px 36px;max-width:1000px;margin:auto}
+@media(max-width:540px){.reservation-heading h1{font-size:35px}.reservation-heading{gap:20px;margin-bottom:24px}.reservation-help{display:flex;align-items:center;gap:12px;padding-bottom:8px}.reservation-help span{font-size:12px}.reservation-help strong{font-size:16px}.reservation-help>svg{width:16px;height:16px}.reservation-frame{height:560px}.rental-terms>summary{font-size:15px;padding:20px}.contract-content{padding:8px 22px 28px}.booking-page .booking-guide{padding-bottom:32px}}
+/* Matching, quiet disclosures; the contract sheet appears only when expanded. */
+.booking-guide-details,.rental-terms{background:transparent;border:0;border-bottom:1px solid #d4d4d4;margin:0;padding:0;max-width:none}
+.booking-guide-details{border-top:1px solid #d4d4d4}
+.booking-guide-details>summary,.rental-terms>summary{padding:20px 0;font-size:15px;font-weight:550;color:#454545;gap:24px}
+.booking-guide-details>summary>svg,.rental-terms>summary>svg{width:18px;height:18px}
+.booking-instructions-title{font-size:22px;line-height:1.4;margin:8px 0 24px}
+.contract-content{max-width:1000px;margin:4px auto 28px;padding:30px 36px;background:#fff;border:1px solid #d5d5d5;border-top:2px solid #101010}
+@media(max-width:540px){.booking-guide-details>summary,.rental-terms>summary{padding:18px 0;font-size:14px}.contract-content{padding:24px 20px;margin-bottom:20px}.booking-instructions-title{font-size:21px}}

@@ -22,6 +22,8 @@ for page in build.pages:
             if norm(node) and norm(node) not in actual and not (page=='en/index.html' and norm(node) in english_revisions): errors.append((page,'Missing source copy',norm(node)))
         elif node.a.get('id')=='span-187-219' and page in ['index.html','en/index.html']:
             pass # User-approved 50% shorter service introduction.
+        elif node.a.get('id')=='span-31-213' and page in ['reservation-en-ligne/index.html','en/online-booking/index.html']:
+            pass # Embedded booking now appears above the instructions.
         elif node.tag not in ['script','style','svg']:
             for c in node.children:check_copy(c)
     check_copy(source)
@@ -70,7 +72,13 @@ for page in build.pages:
 
     if page in ['reservation-en-ligne/index.html','en/online-booking/index.html']:
         booking=generated.all(lambda n:n.tag=='a' and 'Recherche.aspx' in n.a.get('href',''))
-        assert len(booking)==1
+        assert len(booking)==2
+        frames=generated.all(lambda n:n.tag=='iframe' and n.cls('reservation-frame'))
+        assert len(frames)==1 and frames[0].a['src']==booking[0].a['href']
+        assert '/(S(' not in frames[0].a['src']
+        assert frames[0].a.get('title') and frames[0].a['height']=='560'
+        assert booking[0].a['target']=='_blank' and booking[0].a['rel']=='noopener'
+        assert all(n.tag=='details' and 'open' not in n.a for n in generated.all(lambda n:n.cls('rental-terms') or n.cls('booking-guide-details')))
         q=parse_qs(urlsplit(booking[0].a['href']).query)
         assert q['PartenaireID']==['82EFA877-8719-4C28-A57A-1492A3F2F470']
         assert q['Langue']==['EN' if page.startswith('en/') else 'FR']

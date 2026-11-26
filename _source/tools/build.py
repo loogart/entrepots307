@@ -215,8 +215,21 @@ def subpage(source,current,english):
    out+=f'<article class="step">{icon(i)}<h3>{tx(h)}</h3><div class="prose">{inner(p)}</div></article>'
   contract=source.all(lambda n:n.cls('contract-box'))
   terms=cleaned(contract[0],current) if contract else ''
-  a=source.find('link-47-213');href=a.a['href']
-  return head+f'<section class="section booking"><div class="section-heading"><h2>{tx(source.find("span-25-213"))}</h2></div><div class="booking-intro prose">{inner(source.find("span-31-213"))}</div><div class="steps">{out}</div><div class="booking-launch">{button(tx(source.find("span-49-213")) or tx(a),href)}</div><div class="terms prose">{terms}</div></section>'
+  a=source.find('link-47-213')
+  # Start a fresh provider session rather than reusing a visitor's temporary /S(...)/ URL.
+  href='https://www.anemonestorage.com/Recherche.aspx?PartenaireID=82EFA877-8719-4C28-A57A-1492A3F2F470&Langue='+('EN' if english else 'FR')+'&Ref='
+  portal_title='Find your space.' if english else 'Trouvez votre espace.'
+  portal_desc='Choose your date and rental agreement to see availability. Reserve your space, sign and pay online.' if english else 'Choisissez votre date et votre bail pour voir les disponibilités. Réservez votre espace, signez et payez en ligne.'
+  open_label='Open in a new tab' if english else 'Ouvrir dans un nouvel onglet'
+  frame_title='Entrepôts 307 reservations via Anemone' if english else 'Réservation Entrepôts 307 avec Anemone'
+  help_label='Need a hand?' if english else 'Besoin d’un coup de main?'
+  provider_label='Booking powered by Anemone' if english else 'Réservation avec Anemone'
+  contract_label='Rental terms' if english else 'Conditions de location'
+  contract_title=tx(contract[0].all(lambda n:n.tag=='h4')[0])
+  terms=re.sub(r'<h4>.*?</h4>','',terms,flags=re.S)
+  portal=f'''<section class="section reservation-experience" aria-labelledby="reservation-title"><div class="reservation-heading"><div><p class="eyebrow">{tx(title)} · CANTLEY</p><h1 id="reservation-title">{portal_title}</h1><p>{portal_desc}</p></div><a class="reservation-help" href="tel:8195934784"><span>{help_label}</span><strong>819 593-4784</strong>{ARROW}</a></div><div class="reservation-console"><div class="reservation-toolbar"><span class="reservation-provider"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>{provider_label}</span><a href="{escape(href,quote=True)}" target="_blank" rel="noopener">{open_label}{ARROW}</a></div><iframe class="reservation-frame" src="{escape(href,quote=True)}" title="{frame_title}" width="1200" height="560" referrerpolicy="strict-origin-when-cross-origin" allow="payment"></iframe></div></section>'''
+  guide_label='How booking works' if english else 'Comment réserver?'
+  return portal+f'<section class="section booking booking-guide"><details class="booking-guide-details"><summary><span>{guide_label}</span>{PLUS}</summary><div class="booking-guide-content"><h2 class="booking-instructions-title">{tx(source.find("span-25-213"))}</h2><div class="steps">{out}</div><a class="text-link" href="{escape(href,quote=True)}" target="_blank" rel="noopener">{tx(source.find("span-49-213")) or tx(a)}{ARROW}</a></div></details><details class="rental-terms"><summary><span>{contract_title}</span>{PLUS}</summary><div class="contract-content"><div class="contract-masthead"><span>ENTREPÔTS 307</span><span>{contract_label}</span></div><div class="terms prose">{terms}</div></div></details></section>'
  # Contact: retain all content from the existing page body.
  main=source.find('div_block-1-42');sections=main.all(lambda n:n.tag=='section' and not n.cls('page-header'))
  return head+'<section class="section contact-layout"><div class="contact-content">'+''.join(cleaned(n,current) for n in sections)+f'</div><div class="contact-photo"><img src="{asset("contact-facility-locks.jpg",current)}" width="1536" height="1024" alt="Entrepôts 307, Cantley"></div></section>'
@@ -225,7 +238,7 @@ for current in pages:
  main=home(source,current,english) if ishome else subpage(source,current,english)
  title=source.all(lambda n:n.tag=='title')[0].text()
  tracking_head,tracking_body=tracking((SOURCE/current).read_text())
- html=f'''<!doctype html><html lang="{'en-CA' if english else 'fr-CA'}"><head>{seo_head(current,source,asset)}{tracking_head}</head><body class="{'home' if ishome else 'inner-page'}">{tracking_body}<a class="skip-link" href="#main">{'Skip to content' if english else 'Aller au contenu'}</a>{header(current,english)}<main id="main">{main}</main>{footer(current,english,source)}</body></html>'''
+ html=f'''<!doctype html><html lang="{'en-CA' if english else 'fr-CA'}"><head>{seo_head(current,source,asset)}{tracking_head}</head><body class="{'home' if ishome else 'inner-page'}{' booking-page' if current in ['reservation-en-ligne/index.html','en/online-booking/index.html'] else ''}">{tracking_body}<a class="skip-link" href="#main">{'Skip to content' if english else 'Aller au contenu'}</a>{header(current,english)}<main id="main">{main}</main>{footer(current,english,source)}</body></html>'''
  # Reserve image dimensions to reduce layout shifts, without altering approved crops.
  dimensions=json.loads((ROOT/'_source/media-dimensions.json').read_text())
  def image_size(match):

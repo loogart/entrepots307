@@ -39,3 +39,5 @@ Google Ads `AW-16731741234` and Meta Pixel `1455636772776328`, including PageVie
 Reservations continue to use the existing Anemone booking destination and partner ID, with the matching French/English language parameter. The site does not process bookings itself.
 
 Search Console and Bing Webmaster Tools sitemap submissions and business-profile management happen in their respective owner accounts; deploying this repository does not submit them automatically.
+
+The reservation pages embed Anemone using the stable search URL, never a temporary visitor session. Each language passes its corresponding `Langue` value. Anemone controls the form inside the frame; the site controls the surrounding panel and contract-style terms. A direct new-tab link remains available. Availability search was verified inside the frame; final contract acceptance and payment are completed by the customer.
