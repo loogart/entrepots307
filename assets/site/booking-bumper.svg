@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Entrepôts 307</title><style>
+.bumper-shell{animation:shell 7s cubic-bezier(.22,1,.36,1) infinite}
+.bumper-box{animation:box 7s cubic-bezier(.22,1,.36,1) infinite;animation-delay:var(--delay);transform-box:fill-box;transform-origin:center}
+.bumper-name{animation:name 7s ease infinite}.bumper-url{animation:url 7s ease infinite}
+@keyframes shell{0%,3%{opacity:0;transform:translateY(20px)}14%,90%{opacity:1;transform:translateY(0)}98%,100%{opacity:0;transform:translateY(0)}}
+@keyframes box{0%,10%{opacity:0;transform:translateY(18px)}23%,87%{opacity:1;transform:translateY(0)}95%,100%{opacity:0;transform:translateY(0)}}
+@keyframes name{0%,20%{opacity:0;transform:translateY(8px)}31%,90%{opacity:1;transform:translateY(0)}98%,100%{opacity:0;transform:translateY(0)}}
+@keyframes url{0%,35%{opacity:0;transform:translateY(6px)}46%,90%{opacity:1;transform:translateY(0)}98%,100%{opacity:0;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.bumper-shell,.bumper-box,.bumper-name,.bumper-url{animation:none;opacity:1;transform:none}}
+</style><path fill="#080808" d="M0 0h600v400H0z"/>
+<g transform="translate(210 45) scale(.34)"><g class="bumper-shell"><path xmlns="http://www.w3.org/2000/svg" d="M215.72 136.828H332.618V5.8457L4.44922 95.9902V424.173H215.72V136.828Z" fill="#FFD400" />
+<path xmlns="http://www.w3.org/2000/svg" d="M220.175 428.618H0V92.5915L337.087 0V141.287H220.175V428.618ZM8.90436 419.714H211.271V132.382H328.183V11.6776L8.90436 99.3751V419.714Z" fill="#FFD400" />
+<path xmlns="http://www.w3.org/2000/svg" d="M194.584 95.9893V424.172H234.021V162.18H483.316V424.172H522.767V95.9893H194.584Z" fill="#FFD400" />
+<path xmlns="http://www.w3.org/2000/svg" d="M527.237 428.618H478.896V166.64H238.492V428.618H190.15V91.5312H527.237V428.618ZM487.8 419.714H518.333V100.436H199.055V419.714H229.588V157.736H487.8V419.714Z" fill="#FFD400" />
+<path xmlns="http://www.w3.org/2000/svg" d="M484.747 137.03H373.477V143.556H484.747V137.03Z" fill="#FFD400" />
+<path xmlns="http://www.w3.org/2000/svg" d="M270.48 115.091H231.953V121.616H270.48V115.091Z" fill="#FFD400" />
+</g><g class="bumper-box" style="--delay:0.0s"><path xmlns="http://www.w3.org/2000/svg" d="M363.674 383.821H410.646V430.793H363.674V383.821Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g><g class="bumper-box" style="--delay:0.09s"><path xmlns="http://www.w3.org/2000/svg" d="M363.674 326.832H410.646V373.804H363.674V326.832Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g><g class="bumper-box" style="--delay:0.18s"><path xmlns="http://www.w3.org/2000/svg" d="M303.549 383.821H350.521V430.793H303.549V383.821Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g><g class="bumper-box" style="--delay:0.27s"><path xmlns="http://www.w3.org/2000/svg" d="M422.58 383.821H469.552V430.793H422.58V383.821Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g><g class="bumper-box" style="--delay:0.36s"><path xmlns="http://www.w3.org/2000/svg" d="M422.58 325.92H469.552V372.892H422.58V325.92Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g><g class="bumper-box" style="--delay:0.44999999999999996s"><path xmlns="http://www.w3.org/2000/svg" d="M422.58 268.933H469.552V315.905H422.58V268.933Z" fill="#FFD400" stroke-width="3.73517" stroke="black" />
+</g></g>
+<g class="bumper-name"><text x="300" y="254" text-anchor="middle" fill="white" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="37" letter-spacing="-1">Entrepôts 307</text></g>
+<g class="bumper-url"><path d="M151 293h298v48H151z" fill="none" stroke="#ffd400" stroke-width="1.5"/><text x="300" y="324" text-anchor="middle" fill="white" font-family="Arial,Helvetica,sans-serif" font-size="22">entrepots307.com</text><path d="m430 330 3 23 6-8 10 3z" fill="white" stroke="#080808" stroke-width="1.5"/></g></svg>

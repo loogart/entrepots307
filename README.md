@@ -1,89 +1,41 @@
-# entrepots307 — static export
+# Entrepôts 307
 
-Static mirror of entrepots307.com. Real compiled CSS, real JS, real images —
-styling is identical to the live site, not an approximation.
+Bilingual static website for Entrepôts 307 in Cantley, Québec. The approved redesign uses square corners, black/yellow branding, responsive storage cards, and original facility photography alongside approved generated illustrations.
 
-## Structure
+## Build and verify
 
-```
-index.html                      Accueil (FR)
-conseils/  contact/  faq/  nos-entrepots/  reservation-en-ligne/
-en/index.html                   Home (EN)
-en/contact/  en/faq/  en/online-booking/  en/our-warehouses/  en/tips/
-wp-content/                     images, Oxygen CSS, plugin JS  — required
-wp-includes/                    jQuery — required
-.nojekyll                       stops GitHub Pages mangling the folders
+```sh
+npm run build
+npm test
+python3 -m http.server 8310
 ```
 
-12 pages, 69 files, 2.6 MB.
+No package installation is required. Python 3.9+ builds all 12 pages and the bilingual XML sitemap. Open `http://localhost:8310/` to review the production website.
 
-## What was removed
+- `_source/tools/build.py`: page templates and approved content refinements.
+- `_source/tools/seo.py`: unique bilingual metadata, canonical and alternate URLs, business/service/FAQ structured data, and preserved tracking extraction.
+- `_source/legacy/`: frozen source copy and original tracking snippets.
+- `_source/brand/`: editable vector social-preview artwork.
+- `_source/media/`: photo masters; optimized WebP files are in `assets/site/`.
+- `assets/site/home-copy.json`: approved shortened homepage introduction.
+- `assets/site/styles.css` and `site.js`: shared responsive styles and navigation.
 
-- `wp-json/` REST API dumps and oembed endpoints (~380 KB, no purpose in a static site)
-- Duplicate `?p=ID` copies of every page — the menus that pointed at them now
-  point at the real pages instead
-- Dead `<link>` tags: shortlink, pingback, EditURI, wlwmanifest, oembed (82 tags)
+## Publishing
 
-`hreflang` tags were kept, so FR↔EN stays intact.
+GitHub Pages deploys the root of `main` to https://entrepots307.com/ using the existing `CNAME`. `_config.yml` excludes editing sources and the local draft from the published site. Push the verified production changes to `main` and check the Pages deployment.
 
-**Nothing else was deleted.** The multiple image sizes that look like duplicates
-(`photo-300x200.jpg`, `photo-768x512.jpg`…) are all referenced in `srcset` —
-I checked every one. Pruning them would break responsive images.
+The original 12 French/English routes remain in place. Legacy `wp-content` files are retained for existing document and media URLs. The new pages have no dependency on the old Oxygen, WordPress, staging-domain, or Typekit styles.
 
-Verified: **0 broken internal references** across all 69 files.
+## Search and sharing
 
-## Before you push
+Every page includes a unique title and description, absolute canonical URL, reciprocal French/English alternates, Open Graph and Twitter preview metadata, and factual JSON-LD. `sitemap.xml` lists every translated route; `robots.txt` permits public indexing. FAQs use the same answers shown in the page. Prices and business details must stay synchronized with visible content; no reviews or opening hours are invented.
 
-**One stylesheet loads from an old staging domain.** `index.html`,
-`contact/` and `reservation-en-ligne/` pull `oxygen/css/12.css` from
-`thomtech.wttb2jowsb-ewl6n1vzj352.p.temp-site.link`. That file is not in this
-export, and the *live site has the same dependency* — if that temp host expires,
-styling breaks there too. Grab it and localise:
+The favicon, Apple touch icon, install icons, and French/English social cards use the approved brand artwork. Social cards are 1200 × 630 PNGs. Keep assets at their current URLs when rebuilding.
 
-```bash
-curl -o wp-content/uploads/oxygen/css/12.css \
-  "https://thomtech.wttb2jowsb-ewl6n1vzj352.p.temp-site.link/wp-content/uploads/oxygen/css/12.css"
-grep -rl 'temp-site.link' --include="*.html" . | \
-  xargs sed -i '' 's|https://thomtech[^/]*temp-site\.link/|/|g'
-```
+## Tracking and reservations
 
-**Adobe Fonts is domain-locked.** The site loads `use.typekit.net/ppw6qyv.css`.
-Typekit kits only serve to whitelisted domains — add your `github.io` domain to
-the kit settings or the type falls back to system fonts.
+Google Ads `AW-16731741234` and Meta Pixel `1455636772776328`, including PageView and the noscript fallback, are preserved from the original production pages. The release check compares the exact tracking snippets with the frozen originals.
 
-**The contact form won't work.** Static hosting can't process a POST.
-Formspree, Netlify Forms, or a mailto link.
+Reservations continue to use the existing Anemone booking destination and partner ID, with the matching French/English language parameter. The site does not process bookings itself.
 
-**Other external dependencies** (all fine, just noting they're live calls):
-Google Tag Manager, Google Fonts, cdnjs (fancybox), Facebook, and the Anemone
-booking portal.
-
-## Deploy
-
-```bash
-git init && git add -A && git commit -m "static export"
-git remote add origin <your-repo>
-git push -u origin main
-```
-
-Settings → Pages → deploy from branch, root folder. Add a `CNAME` file
-containing the domain if you point DNS at it.
-
-## Hero fix (applied)
-
-Both homepages had two empty `<video autoplay loop muted playsInline>` elements
-layered over the hero. They had no source on the live site either, so browsers
-rendered the broken-media control — the play button you saw on mobile.
-
-Removed all four (two per homepage). The hero was already a static background
-image (`promo-janv-2025.jpg`), so nothing else changed.
-
-Also added `background-position: center` to the hero's inline style. Without it
-the browser defaults to top-left, which crops badly on narrow screens now that
-the image is the whole hero. To revert, delete that one property from the
-`home-hero` section in `index.html` and `en/index.html`.
-
-Note: `.home-hero` is `height: 100vh` in the Oxygen CSS. On mobile browsers
-`100vh` includes the address bar, so the section can run slightly taller than
-the screen. That behaviour is unchanged from the live site — flagging it in case
-you'd rather switch it to `100svh`.
+Search Console and Bing Webmaster Tools sitemap submissions and business-profile management happen in their respective owner accounts; deploying this repository does not submit them automatically.

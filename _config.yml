@@ -1,0 +1,9 @@
+# GitHub Pages publishes the approved static pages; editing sources are excluded from Pages.
+exclude:
+  - _source
+  - redesign
+  - README.md
+  - package.json
+  - package-lock.json
+  - node_modules
+  - .DS_Store

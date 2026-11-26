@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "node scripts/build-static.js"
+    "build": "python3 _source/tools/build.py",
+    "test": "python3 _source/tools/check_release.py"
   },
-  "devDependencies": {}
+  "private": true
 }
