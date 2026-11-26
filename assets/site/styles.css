@@ -200,3 +200,19 @@ body{font-size:17px}
 .booking-instructions-title{font-size:22px;line-height:1.4;margin:8px 0 24px}
 .contract-content{max-width:1000px;margin:4px auto 28px;padding:30px 36px;background:#fff;border:1px solid #d5d5d5;border-top:2px solid #101010}
 @media(max-width:540px){.booking-guide-details>summary,.rental-terms>summary{padding:18px 0;font-size:14px}.contract-content{padding:24px 20px;margin-bottom:20px}.booking-instructions-title{font-size:21px}}
+
+/* Mobile hero: readable copy above a dedicated, unobstructed view of the units. */
+@media(max-width:600px){
+ .hero{display:grid;grid-template-columns:minmax(0,1fr);height:auto;min-height:0;max-height:none;background:var(--black)}
+ .hero-copy{grid-area:1/1;max-width:none;width:100%;padding:34px 6% 36px}
+ .hero .eyebrow{margin-bottom:18px}
+ .hero h1{font-size:clamp(33px,10.3vw,55px);line-height:1.15;margin-bottom:0;letter-spacing:-.045em}
+ .hero-title-bigger{font-size:inherit;white-space:nowrap}
+ .hero-description{max-width:440px;margin:20px 0 24px;font-size:16px;line-height:1.6}
+ .hero-actions{gap:18px;flex-wrap:wrap}
+ .hero .button{padding:15px 20px;gap:26px}
+ .hero .light-link{font-size:11px;gap:10px}
+ .hero-image{grid-area:2/1;position:relative;display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:42% 50%}
+ .hero-shade{display:none}
+ .hero-caption{grid-area:2/1;position:relative;align-self:end;left:auto;right:auto;bottom:auto;width:auto;margin:0;padding:34px 6% 15px;border:0;background:linear-gradient(transparent,rgba(0,0,0,.65));z-index:1;pointer-events:none}
+}
